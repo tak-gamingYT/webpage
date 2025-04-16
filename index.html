@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gambling SMP - Nơi Khẳng Định Đẳng Cấp</title>
+    <title>Gambling SMP - Đỉnh Cao Cá Cược & Sinh Tồn Minecraft</title>
     
     <!-- Tailwind CSS & DaisyUI via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
@@ -13,123 +13,261 @@
     <!-- Font Awesome for Icons via CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Custom Tailwind Configuration (Optional, but good for themes/fonts) -->
+    <!-- AOS (Animate On Scroll) Library via CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Google Fonts (Example: Bebas Neue for headings, Inter for body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
     <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'], // Ví dụ: sử dụng font Inter
+             sans: ['Inter', 'sans-serif'],
+             heading: ['Bebas Neue', 'sans-serif'], // Custom font for headings
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'pulse-glow': 'pulseGlow 2s infinite ease-in-out',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+             pulseGlow: {
+               '0%, 100%': { boxShadow: '0 0 15px 5px rgba(59, 130, 246, 0.5)' }, // Blue glow
+               '50%': { boxShadow: '0 0 25px 10px rgba(59, 130, 246, 0.7)' },
+             }
           },
         }
       },
-      plugins: [require("daisyui")], // Đảm bảo DaisyUI được load
+      plugins: [require("daisyui")],
       daisyui: {
-        themes: ["night"], // Sử dụng theme "night" của DaisyUI
+        themes: ["night"], // Stick with night theme but add colorful accents
       },
     }
     </script>
 
-    <!-- Internal Styles (Nếu cần thêm CSS tùy chỉnh không dùng utility classes) -->
+    <!-- Internal Styles -->
     <style>
-        /* Ví dụ: Thêm hiệu ứng nhẹ nhàng cho các card khi hover */
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        /* Apply custom fonts */
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px;}
+
+        /* Hero background with gradient overlay */
+        .hero-bg-minecraft {
+             /* Replace with a cool Minecraft background image URL if you have one */
+             /* background-image: url('your-minecraft-background.jpg'); */
+             background-color: #1a202c; /* Fallback color */
+             background-size: cover;
+             background-position: center;
+             background-attachment: fixed; /* Parallax-like effect */
+             position: relative;
         }
+        .hero-bg-minecraft::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(29, 37, 52, 0.8) 0%, rgba(17, 24, 39, 0.95) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Styling for the IP copy button */
         .ip-copy {
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         .ip-copy:hover {
-            background-color: #4a5568; /* Darker shade on hover */
+            transform: scale(1.05);
+            border-color: #3b82f6; /* Blue border on hover */
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
         }
-        .minecraft-gradient {
-             background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+        /* Subtle glow animation for primary button */
+        .btn-primary.glow {
+             animation: pulseGlow 2.5s infinite ease-in-out;
+             box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.5); /* Initial glow */
         }
-        .highlight-stat {
-             background-color: rgba(255, 255, 255, 0.1);
-             padding: 2px 8px;
-             border-radius: 4px;
-             font-weight: bold;
+         /* Make feature cards more colorful on hover */
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
         }
+        .feature-card:hover i {
+             transform: scale(1.1);
+             filter: brightness(1.2);
+        }
+        /* Gradient text utility */
+        .text-gradient-purple-blue {
+             background: linear-gradient(90deg, #a78bfa, #3b82f6);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             background-clip: text;
+             text-fill-color: transparent;
+        }
+         .text-gradient-yellow-red {
+             background: linear-gradient(90deg, #facc15, #ef4444);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             background-clip: text;
+             text-fill-color: transparent;
+        }
+         .text-gradient-green-cyan {
+             background: linear-gradient(90deg, #4ade80, #22d3ee);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             background-clip: text;
+             text-fill-color: transparent;
+        }
+         /* Section divider */
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            margin: 1rem auto 2.5rem auto; /* Center divider */
+            border-radius: 2px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+             h1 { font-size: 3.5rem; /* 56px */ }
+             h2 { font-size: 2.5rem; /* 40px */ }
+             .hero p { font-size: 1.1rem; /* 17.6px */ }
+             .ip-copy { font-size: 1.25rem; /* 20px */ padding: 0.75rem 1rem; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2.8rem; /* ~45px */ }
+            h2 { font-size: 2rem; /* 32px */ }
+             .hero p { font-size: 1rem; /* 16px */ }
+        }
+
     </style>
 </head>
 
-<body class="bg-base-100 text-base-content font-sans">
+<body class="bg-base-100 text-base-content font-sans overflow-x-hidden">
 
     <!-- Hero Section -->
-    <div class="hero min-h-screen minecraft-gradient">
-        <div class="hero-overlay bg-opacity-60"></div>
-        <div class="hero-content text-center text-neutral-content">
-            <div class="max-w-3xl">
-                <h1 class="mb-5 text-5xl md:text-7xl font-bold uppercase tracking-tight">Gambling SMP</h1>
-                <p class="mb-5 text-xl md:text-2xl">Nơi tiền bạc, quyền lực và may mắn quyết định tất cả!</p>
-                <p class="mb-8 text-lg">Tham gia ngay server Minecraft độc nhất, nơi bạn có thể <span class="font-bold text-yellow-400">cá cược</span>, <span class="font-bold text-green-400">kiếm tiền</span>, mua những vật phẩm <span class="font-bold text-blue-400">mạnh mẽ</span> và <span class="font-bold text-red-500">xưng bá thiên hạ</span>.</p>
-                <a href="#connect" class="btn btn-primary btn-lg shadow-lg hover:scale-105 transition-transform"> <i class="fas fa-server mr-2"></i> Kết Nối Ngay</a>
+    <div class="hero min-h-screen hero-bg-minecraft">
+        <div class="hero-content text-center text-neutral-content py-10 px-4">
+            <div class="max-w-4xl" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="mb-4 text-5xl sm:text-6xl md:text-8xl font-heading uppercase tracking-wider text-gradient-purple-blue">Gambling SMP</h1>
+                <p class="mb-6 text-xl md:text-3xl font-heading text-gray-300">Tiền Bạc - Quyền Lực - May Mắn</p>
+                <p class="mb-8 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                    Chào mừng đến với server Minecraft độc nhất, nơi bạn <span class="font-bold text-yellow-400">thử vận may</span> qua cá cược, <span class="font-bold text-green-400">xây dựng đế chế</span> kinh tế, trang bị <span class="font-bold text-cyan-400">vật phẩm huyền thoại</span> và <span class="font-bold text-red-500">chiến đấu</span> để giành lấy ngôi vị bá chủ!
+                </p>
+                <a href="#connect" class="btn btn-primary btn-lg shadow-lg hover:scale-105 transition-transform glow font-semibold text-lg px-8 py-3">
+                    <i class="fas fa-bolt mr-2"></i> Tham Gia Ngay!
+                </a>
             </div>
         </div>
     </div>
 
+    <!-- Why Choose Us Section -->
+     <div class="bg-base-200 py-16 md:py-24 px-4">
+         <div class="container mx-auto text-center">
+             <h2 class="text-4xl md:text-5xl font-heading mb-4" data-aos="fade-up">Tại Sao Chọn Gambling SMP?</h2>
+             <div class="section-divider bg-gradient-to-r from-purple-500 to-blue-500" data-aos="fade-up" data-aos-delay="100"></div>
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
+                 <!-- Point 1 -->
+                 <div data-aos="fade-up" data-aos-delay="200">
+                     <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center">
+                         <i class="fas fa-dice-d20 text-6xl mb-4 text-gradient-yellow-red"></i>
+                         <h3 class="text-2xl font-heading mb-2">Độc Đáo & Hấp Dẫn</h3>
+                         <p class="text-base-content/80">Hệ thống Gambling và kinh tế được thiết kế riêng biệt, mang lại trải nghiệm mới lạ, không ngừng thử thách.</p>
+                     </div>
+                 </div>
+                 <!-- Point 2 -->
+                 <div data-aos="fade-up" data-aos-delay="300">
+                      <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center">
+                         <i class="fas fa-shield-halved text-6xl mb-4 text-gradient-green-cyan"></i>
+                         <h3 class="text-2xl font-heading mb-2">Sinh Tồn Khắc Nghiệt</h3>
+                         <p class="text-base-content/80">Thanh Nước & Nhiệt Độ từ RLCraft thêm chiều sâu cho lối chơi sinh tồn, đòi hỏi kỹ năng và sự chuẩn bị.</p>
+                     </div>
+                 </div>
+                  <!-- Point 3 -->
+                 <div data-aos="fade-up" data-aos-delay="400">
+                      <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center">
+                         <i class="fas fa-rocket text-6xl mb-4 text-gradient-purple-blue"></i>
+                         <h3 class="text-2xl font-heading mb-2">Hiệu Năng Vượt Trội</h3>
+                         <p class="text-base-content/80">Ping thấp (~50ms), server ổn định, cấu hình cao đảm bảo trải nghiệm mượt mà, không giật lag.</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
     <!-- Features Section -->
     <div class="container mx-auto px-4 py-16 md:py-24">
-        <h2 class="text-4xl font-bold text-center mb-12 uppercase">Tính Năng Nổi Bật</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 class="text-4xl md:text-5xl font-heading text-center mb-4 uppercase" data-aos="fade-up">Khám Phá Tính Năng</h2>
+         <div class="section-divider bg-gradient-to-r from-yellow-400 to-red-500" data-aos="fade-up" data-aos-delay="100"></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
 
             <!-- Feature Card 1: Gambling & Economy -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300">
+            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in">
                 <div class="card-body items-center text-center">
-                    <i class="fas fa-coins text-yellow-400 text-5xl mb-4"></i>
-                    <h3 class="card-title text-2xl font-semibold">Cá Cược & Kinh Tế</h3>
-                    <p>Thử vận may với các trò chơi cá cược đa dạng. Kiếm tiền, làm giàu và thống trị nền kinh tế server!</p>
+                    <i class="fas fa-coins text-yellow-400 text-6xl mb-4 transition-all duration-300"></i>
+                    <h3 class="card-title text-3xl font-heading">Cá Cược & Kinh Tế</h3>
+                    <p class="text-base-content/80">Thử vận may, đặt cược và làm giàu. Xây dựng đế chế tài chính của riêng bạn!</p>
                 </div>
             </div>
 
             <!-- Feature Card 2: Shop & Items -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300">
+            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
                 <div class="card-body items-center text-center">
-                    <i class="fas fa-shopping-cart text-green-400 text-5xl mb-4"></i>
-                    <h3 class="card-title text-2xl font-semibold">Shop & Vật Phẩm</h3>
-                    <p>Mua bán vật phẩm tại shop tiện lợi. Sở hữu trang bị mạnh mẽ, độc đáo để gia tăng sức mạnh của bạn.</p>
+                    <i class="fas fa-store text-green-400 text-6xl mb-4 transition-all duration-300"></i>
+                    <h3 class="card-title text-3xl font-heading">Shop & Vật Phẩm</h3>
+                    <p class="text-base-content/80">Mua bán vật phẩm mạnh mẽ, độc đáo. Trang bị tận răng để thống trị!</p>
                 </div>
             </div>
 
             <!-- Feature Card 3: PvP & Xưng Bá -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300">
+            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
                 <div class="card-body items-center text-center">
-                    <i class="fas fa-khanda text-red-500 text-5xl mb-4"></i> <!-- Khanda icon for combat -->
-                    <h3 class="card-title text-2xl font-semibold">Chiến Đấu & Xưng Bá</h3>
-                    <p>Tham gia những trận chiến PvP nảy lửa. Đánh bại đối thủ, khẳng định vị thế và trở thành bá chủ server.</p>
+                    <i class="fas fa-khanda text-red-500 text-6xl mb-4 transition-all duration-300"></i>
+                    <h3 class="card-title text-3xl font-heading">Chiến Đấu & Xưng Bá</h3>
+                    <p class="text-base-content/80">Tham gia PvP, war clan, khẳng định sức mạnh và vị thế của bạn trên server.</p>
                 </div>
             </div>
 
-            <!-- Feature Card 4: RTP & Utilities -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300">
+            <!-- Feature Card 4: RLCraft Mechanics -->
+             <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
+                 <div class="card-body items-center text-center">
+                      <div class="flex gap-4 mb-4">
+                          <i class="fas fa-tint text-cyan-400 text-6xl transition-all duration-300"></i>
+                          <i class="fas fa-temperature-high text-orange-400 text-6xl transition-all duration-300"></i>
+                      </div>
+                     <h3 class="card-title text-3xl font-heading">Cơ Chế RLCraft</h3>
+                     <p class="text-base-content/80">Quản lý cơn khát và nhiệt độ cơ thể. Sinh tồn chưa bao giờ thử thách đến thế!</p>
+                 </div>
+             </div>
+
+             <!-- Feature Card 5: RTP & Utilities -->
+            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
                 <div class="card-body items-center text-center">
-                    <i class="fas fa-compass text-blue-400 text-5xl mb-4"></i>
-                    <h3 class="card-title text-2xl font-semibold">Tiện Ích Server</h3>
-                    <p>Sử dụng lệnh <code class="bg-base-100 px-1 rounded text-sm">/rtp</code> để dịch chuyển ngẫu nhiên, khám phá thế giới. Cùng nhiều tiện ích khác đang chờ bạn!</p>
+                    <i class="fas fa-random text-blue-400 text-6xl mb-4 transition-all duration-300"></i>
+                    <h3 class="card-title text-3xl font-heading">RTP & Tiện Ích</h3>
+                    <p class="text-base-content/80">Dịch chuyển ngẫu nhiên khám phá thế giới (<code class="bg-base-100 px-1 rounded text-sm">/rtp</code>) và nhiều lệnh hữu ích khác.</p>
                 </div>
             </div>
-            
-            <!-- Feature Card 5: RLCraft Mechanics -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300">
+
+            <!-- Feature Card 6: Cross-Play -->
+            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="500">
                 <div class="card-body items-center text-center">
                      <div class="flex gap-4 mb-4">
-                         <i class="fas fa-tint text-cyan-400 text-5xl"></i> 
-                         <i class="fas fa-thermometer-half text-orange-400 text-5xl"></i>
+                         <i class="fab fa-java text-orange-500 text-6xl transition-all duration-300"></i>
+                         <i class="fas fa-mobile-alt text-emerald-400 text-6xl transition-all duration-300"></i>
                      </div>
-                    <h3 class="card-title text-2xl font-semibold">Sinh Tồn Khắc Nghiệt</h3>
-                    <p>Trải nghiệm cơ chế sinh tồn độc đáo từ RLCraft với <span class="font-semibold">thanh nước</span> và <span class="font-semibold">nhiệt độ cơ thể</span>. Thử thách kỹ năng sinh tồn của bạn!</p>
-                </div>
-            </div>
-
-            <!-- Feature Card 6: Performance -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300">
-                <div class="card-body items-center text-center">
-                    <i class="fas fa-tachometer-alt text-purple-400 text-5xl mb-4"></i>
-                    <h3 class="card-title text-2xl font-semibold">Hiệu Năng Đỉnh Cao</h3>
-                    <p>Server chạy trên cấu hình mạnh mẽ, đảm bảo trải nghiệm <span class="highlight-stat text-green-300">siêu mượt</span> với ping chỉ khoảng <span class="highlight-stat text-green-300">~50ms</span>.</p>
+                    <h3 class="card-title text-3xl font-heading">Hỗ Trợ Cross-Play</h3>
+                    <p class="text-base-content/80">Kết nối dễ dàng từ cả <span class="font-semibold text-orange-500">Java</span> và <span class="font-semibold text-emerald-400">Bedrock</span> Edition.</p>
                 </div>
             </div>
 
@@ -137,51 +275,93 @@
     </div>
 
     <!-- Connection Section -->
-    <div id="connect" class="bg-base-200 py-16 md:py-24">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-8 uppercase">Tham Gia Server</h2>
-            <p class="text-lg mb-4">Server hỗ trợ cả người chơi <span class="font-bold text-lime-400">Java Edition</span> và <span class="font-bold text-emerald-400">Bedrock Edition</span>!</p>
-            <div class="mt-6">
-                <p class="text-xl mb-2">Địa chỉ IP:</p>
-                <div class="inline-block bg-neutral text-neutral-content px-6 py-3 rounded-lg shadow-lg text-2xl font-mono ip-copy relative group" onclick="copyToClipboard('smp.ck.io.vn')">
+    <div id="connect" class="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center text-neutral-content">
+            <h2 class="text-4xl md:text-5xl font-heading mb-4 uppercase" data-aos="fade-up">Sẵn Sàng Chinh Phục?</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">Kết nối ngay để bắt đầu cuộc phiêu lưu đầy kịch tính tại Gambling SMP!</p>
+            
+            <div class="mt-6" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-xl mb-3 font-semibold">Địa chỉ Server (Java & Bedrock):</p>
+                <div class="inline-block bg-neutral text-neutral-content px-6 py-4 rounded-lg shadow-lg text-2xl md:text-3xl font-mono ip-copy relative group" onclick="copyToClipboard('smp.ck.io.vn', this)">
                     smp.ck.io.vn
-                    <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-700 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                        Click để sao chép
+                    <span class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                        Click để sao chép IP
                     </span>
+                     <span id="copy-icon" class="fas fa-copy absolute right-3 top-1/2 transform -translate-y-1/2 text-lg opacity-50 group-hover:opacity-100 transition-opacity"></span>
                 </div>
-                <p id="copy-status" class="text-sm mt-2 h-4"></p> <!-- Placeholder for copy status -->
+                <p id="copy-status" class="text-sm mt-3 h-5 font-semibold transition-all"></p> <!-- Placeholder for copy status -->
             </div>
-            <p class="mt-6 text-base-content/70">Kết nối ngay để bắt đầu hành trình của bạn tại Gambling SMP!</p>
+
+            <div class="mt-10 flex justify-center items-center gap-4 md:gap-6" data-aos="fade-up" data-aos-delay="300">
+                <a href="#" class="btn btn-outline btn-accent hover:scale-105 transition-transform">
+                     <i class="fab fa-discord mr-2"></i> Discord Server
+                </a>
+                 <a href="#" class="btn btn-outline btn-secondary hover:scale-105 transition-transform">
+                     <i class="fas fa-book-open mr-2"></i> Wiki / Hướng Dẫn
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+    <footer class="footer footer-center p-6 bg-base-300 text-base-content">
         <aside>
-            <p>© 2024 Gambling SMP - Mọi quyền được bảo lưu.</p>
+             <i class="fas fa-gem text-3xl text-primary mb-2"></i>
+            <p class="font-semibold">Gambling SMP © 2024</p>
+            <p>Nơi huyền thoại bắt đầu.</p>
         </aside>
+        <nav>
+            <div class="grid grid-flow-col gap-4">
+                 <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M19.615 3.185a4.843 4.843 0 0 0-3.4-.817 4.843 4.843 0 0 0-3.4.817L12 3.61l-.815-.425a4.843 4.843 0 0 0-3.4-.817 4.843 4.843 0 0 0-3.4.817c-.978.798-1.615 1.97-1.615 3.248v5.292a4.843 4.843 0 0 0 .817 3.4l.425.815L3.61 17l.425.815a4.843 4.843 0 0 0 3.4.817 4.843 4.843 0 0 0 3.4-.817L12 17.39l.815.425a4.843 4.843 0 0 0 3.4.817 4.843 4.843 0 0 0 3.4-.817l.425-.815L20.39 17l.425-.815a4.843 4.843 0 0 0 .817-3.4v-5.292c0-1.278-.637-2.45-1.615-3.248zM10 13H8v-2h2v2zm4 0h-2v-2h2v2z"></path></svg></a>
+                <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+                <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.457 0 1.484.758 2.796 1.914 3.563-.705-.023-1.367-.218-1.948-.538v.051c0 2.106 1.496 3.857 3.474 4.253-.364.099-.75.152-1.154.152-.279 0-.55-.027-.816-.077.556 1.788 2.168 3.088 4.08 3.125-1.48 1.16-3.35 1.85-5.38 1.85-.35 0-.693-.021-1.031-.061 1.915 1.23 4.19 1.945 6.63 1.945 7.955 0 12.31-6.585 12.31-12.31 0-.188-.004-.375-.012-.561.845-.609 1.578-1.373 2.158-2.249z"></path></svg></a>
+            </div>
+        </nav>
     </footer>
 
-    <!-- Simple Copy to Clipboard Script -->
+    <!-- Scripts -->
     <script>
-        function copyToClipboard(text) {
+        // Initialize AOS
+        AOS.init({
+            once: true, // Whether animation should happen only once - while scrolling down
+            duration: 800, // values from 0 to 3000, with step 50ms
+            easing: 'ease-in-out', // default easing for AOS animations
+        });
+
+        // Improved Copy to Clipboard Script
+        function copyToClipboard(text, buttonElement) {
             navigator.clipboard.writeText(text).then(function() {
                 const statusElement = document.getElementById('copy-status');
+                const iconElement = buttonElement.querySelector('#copy-icon');
+                
                 statusElement.textContent = 'Đã sao chép IP!';
-                statusElement.classList.add('text-green-500'); // Make it green
+                statusElement.classList.remove('text-red-500');
+                statusElement.classList.add('text-green-400', 'opacity-100');
+                
+                // Change icon to checkmark
+                iconElement.classList.remove('fa-copy');
+                iconElement.classList.add('fa-check');
+                iconElement.classList.add('text-green-400');
+
+                // Reset after 2 seconds
                 setTimeout(() => {
-                    statusElement.textContent = ''; // Clear message after 2 seconds
-                    statusElement.classList.remove('text-green-500');
+                    statusElement.textContent = ''; 
+                    statusElement.classList.remove('opacity-100');
+                    iconElement.classList.remove('fa-check');
+                    iconElement.classList.remove('text-green-400');
+                    iconElement.classList.add('fa-copy');
                 }, 2000);
+
             }, function(err) {
                 const statusElement = document.getElementById('copy-status');
-                statusElement.textContent = 'Lỗi khi sao chép!';
-                statusElement.classList.add('text-red-500'); // Make it red
+                statusElement.textContent = 'Lỗi! Không thể sao chép.';
+                statusElement.classList.remove('text-green-400');
+                statusElement.classList.add('text-red-500', 'opacity-100');
                  setTimeout(() => {
                     statusElement.textContent = ''; 
-                    statusElement.classList.remove('text-red-500');
-                }, 2000);
-                console.error('Could not copy text: ', err);
+                     statusElement.classList.remove('opacity-100');
+                }, 2500);
+                console.error('Lỗi sao chép: ', err);
             });
         }
     </script>
