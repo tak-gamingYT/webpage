@@ -6,6 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gambling SMP - Đỉnh Cao Cá Cược & Sinh Tồn Minecraft</title>
     
+    <!-- Basic Meta Info -->
+    <meta name="description" content="Tham gia Gambling SMP: Server Minecraft độc đáo với cá cược, kinh tế, PvP, RLCraft (nước/nhiệt độ). Hỗ trợ Java & Bedrock. Ping thấp, siêu mượt!">
+
+    <!-- Open Graph / Facebook / Discord / Telegram Meta Tags -->
+    <meta property="og:title" content="Gambling SMP - Đỉnh Cao Cá Cược & Sinh Tồn Minecraft">
+    <meta property="og:description" content="Server Minecraft độc đáo với cá cược, kinh tế, PvP, RLCraft. Hỗ trợ Java & Bedrock. Ping thấp, siêu mượt!">
+    <meta property="og:type" content="website">
+    <!-- !!! THAY THẾ URL NÀY bằng URL thực tế của trang web của bạn !!! -->
+    <meta property="og:url" content="https://smp.ck.io.vn/"> 
+    <!-- !!! THAY THẾ URL NÀY bằng URL đến hình ảnh preview (kích thước gợi ý: 1200x630px) !!! -->
+    <meta property="og:image" content="https://smp.ck.io.vn/images/preview-gambling-smp.jpg"> 
+    <meta property="og:image:alt" content="Gambling SMP Minecraft Server Preview">
+    <meta property="og:site_name" content="Gambling SMP">
+    <meta property="og:locale" content="vi_VN">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- <meta name="twitter:site" content="@YourTwitterHandle"> --> <!-- Optional: Thêm nếu có Twitter handle -->
+    <meta name="twitter:title" content="Gambling SMP - Đỉnh Cao Cá Cược & Sinh Tồn Minecraft">
+    <meta name="twitter:description" content="Server Minecraft độc đáo với cá cược, kinh tế, PvP, RLCraft. Hỗ trợ Java & Bedrock. Ping thấp, siêu mượt!">
+     <!-- !!! THAY THẾ URL NÀY bằng URL đến hình ảnh preview (kích thước gợi ý: 1200x630px) !!! -->
+    <meta name="twitter:image" content="https://smp.ck.io.vn/images/preview-gambling-smp.jpg">
+    <meta name="twitter:image:alt" content="Gambling SMP Minecraft Server Preview">
+
+    <!-- Favicon (Optional but Recommended) -->
+    <!-- <link rel="icon" href="/favicon.ico" sizes="any"> -->
+    <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+    <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+
     <!-- Tailwind CSS & DaisyUI via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,25 +46,16 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Google Fonts REMOVED - No longer needed -->
-    <!-- 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"> 
-    -->
-
-    <!-- Custom Tailwind Configuration - UPDATED for Verdana -->
+    <!-- Custom Tailwind Configuration - FIXED: Removed require() -->
     <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-             // Use Verdana as the primary font, with web-safe fallbacks
              sans: ['Verdana', 'Geneva', 'Tahoma', 'sans-serif'], 
-             // Use Verdana for headings as well for consistency
              heading: ['Verdana', 'Geneva', 'Tahoma', 'sans-serif'], 
           },
-          aspectRatio: {
+          aspectRatio: { // Keep this for aspect-w/h classes
              '16/9': '16 / 9',
           },
           animation: {
@@ -54,35 +74,36 @@
           },
         }
       },
-      plugins: [
-          require("daisyui"),
-          require('@tailwindcss/aspect-ratio'), 
-        ],
+      // REMOVED require() - DaisyUI loaded via CSS link, aspect-ratio should work via core/utility
+      plugins: [ 
+          require("daisyui"), // Keep this one as DaisyUI docs suggest it might integrate theme/config
+          // require('@tailwindcss/aspect-ratio'), // REMOVED - Likely works without explicit require via CDN
+        ], 
       daisyui: {
         themes: ["night"], 
       },
     }
     </script>
 
-    <!-- Internal Styles - UPDATED for Verdana -->
+    <!-- Internal Styles -->
     <style>
         /* Apply Verdana font */
         body { 
             font-family: 'Verdana', 'Geneva', 'Tahoma', sans-serif; 
             line-height: 1.65; 
-            -webkit-font-smoothing: antialiased; /* Improve font rendering on some systems */
+            -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale; 
         }
-        /* Apply Verdana to headings, remove specific letter-spacing if not needed */
         h1, h2, h3, h4, h5, h6, .font-heading { 
             font-family: 'Verdana', 'Geneva', 'Tahoma', sans-serif; 
-            letter-spacing: normal; /* Reset letter-spacing */
-            font-weight: bold; /* Ensure headings are bold with Verdana */
+            letter-spacing: normal;
+            font-weight: bold;
         }
 
-        /* Keep other styles */
+        /* Other styles remain the same */
         .hero-bg-minecraft {
              background-color: #1a202c; 
+             background-image: url('https://images.unsplash.com/photo-1611997324421-2e1ea6a06346?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWluZWNyYWZ0fHx8fHx8MTcxNjA5Mzk1MA&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600'); /* Example background */
              background-size: cover;
              background-position: center;
              background-attachment: fixed; 
@@ -92,7 +113,7 @@
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(180deg, rgba(29, 37, 52, 0.8) 0%, rgba(17, 24, 39, 0.95) 100%);
+            background: linear-gradient(180deg, rgba(29, 37, 52, 0.7) 0%, rgba(17, 24, 39, 0.9) 100%); /* Adjusted opacity slightly */
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; }
@@ -125,16 +146,19 @@
              background: linear-gradient(90deg, #a78bfa, #3b82f6);
              -webkit-background-clip: text; -webkit-text-fill-color: transparent;
              background-clip: text; text-fill-color: transparent;
+             display: inline-block; /* Fix potential gradient issues */
         }
          .text-gradient-yellow-red {
              background: linear-gradient(90deg, #facc15, #ef4444);
              -webkit-background-clip: text; -webkit-text-fill-color: transparent;
              background-clip: text; text-fill-color: transparent;
+             display: inline-block;
         }
          .text-gradient-green-cyan {
              background: linear-gradient(90deg, #4ade80, #22d3ee);
              -webkit-background-clip: text; -webkit-text-fill-color: transparent;
              background-clip: text; text-fill-color: transparent;
+             display: inline-block;
         }
         .section-divider {
             width: 60px; 
@@ -154,31 +178,30 @@
 
         /* Responsive adjustments */
         @media (max-width: 640px) { 
-             .hero { min-height: 90vh; } 
-             h1 { font-size: 2.5rem; line-height: 1.1; } /* Adjusted for Verdana */
-             h2 { font-size: 1.8rem; } /* Adjusted for Verdana */
-             h3.card-title { font-size: 1.25rem; } /* Adjusted for Verdana */
+             .hero { min-height: 90vh; background-attachment: scroll; } /* Disable fixed bg on mobile if it causes issues */
+             h1 { font-size: 2.5rem; line-height: 1.1; } 
+             h2 { font-size: 1.8rem; } 
+             h3.card-title { font-size: 1.25rem; } 
              .hero p.text-lg { font-size: 1rem; } 
-             .hero p.text-base { font-size: 0.9rem; } /* Slightly smaller for Verdana */
+             .hero p.text-base { font-size: 0.9rem; } 
              
-             .ip-copy { font-size: 1rem; padding: 0.75rem 1rem; } /* Adjusted for Verdana */
-             .btn-lg { padding-left: 1.25rem; padding-right: 1.25rem; font-size: 0.9rem;} /* Adjusted for Verdana */
+             .ip-copy { font-size: 1rem; padding: 0.75rem 1rem; } 
+             .btn-lg { padding-left: 1.25rem; padding-right: 1.25rem; font-size: 0.9rem;} 
              .feature-card i { font-size: 2.75rem; } 
              .section-padding { padding-top: 3rem; padding-bottom: 3rem; } 
              .grid { gap: 1.5rem; } 
-             #connect .flex { flex-direction: column; gap: 0.75rem; } 
+             #connect .flex-col { gap: 0.75rem; } /* Adjusted selector for stacked buttons */
         }
 
     </style>
 </head>
 
-<body class="bg-base-100 text-base-content font-sans overflow-x-hidden"> <!-- font-sans will now use Verdana -->
+<body class="bg-base-100 text-base-content font-sans overflow-x-hidden">
 
     <!-- Hero Section -->
-    <div class="hero min-h-screen hero-bg-minecraft">
+    <header class="hero min-h-screen hero-bg-minecraft">
         <div class="hero-content text-center text-neutral-content py-12 px-4"> 
             <div class="max-w-4xl" data-aos="fade-up" data-aos-duration="1000">
-                <!-- font-heading will now use Verdana -->
                 <h1 class="mb-4 text-4xl sm:text-5xl lg:text-6xl font-heading uppercase tracking-wider text-gradient-purple-blue">Gambling SMP</h1> 
                 <p class="mb-6 text-lg md:text-xl lg:text-2xl font-heading text-gray-300">Tiền Bạc - Quyền Lực - May Mắn</p> 
                 <p class="mb-8 text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
@@ -189,161 +212,161 @@
                 </a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Why Choose Us Section -->
-     <div class="bg-base-200 section-padding px-4">
-         <div class="container mx-auto text-center">
-             <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading mb-3" data-aos="fade-up">Tại Sao Chọn Gambling SMP?</h2>
-             <div class="section-divider bg-gradient-to-r from-purple-500 to-blue-500" data-aos="fade-up" data-aos-delay="100"></div>
-             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 mt-10"> 
-                 <!-- Point 1 -->
-                 <div data-aos="fade-up" data-aos-delay="200">
-                     <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center min-h-[10rem]"> 
-                         <i class="fas fa-dice-d20 text-4xl md:text-5xl lg:text-6xl mb-4 text-gradient-yellow-red"></i>
-                         <h3 class="text-lg md:text-xl font-heading mb-2">Độc Đáo & Hấp Dẫn</h3>
-                         <p class="text-sm md:text-base text-base-content/80">Hệ thống Gambling và kinh tế riêng biệt, mang lại trải nghiệm mới lạ.</p>
-                     </div>
-                 </div>
-                 <!-- Point 2 -->
-                 <div data-aos="fade-up" data-aos-delay="300">
-                      <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center min-h-[10rem]">
-                         <i class="fas fa-shield-halved text-4xl md:text-5xl lg:text-6xl mb-4 text-gradient-green-cyan"></i>
-                         <h3 class="text-lg md:text-xl font-heading mb-2">Sinh Tồn Khắc Nghiệt</h3>
-                         <p class="text-sm md:text-base text-base-content/80">Cơ chế Nước & Nhiệt Độ từ RLCraft thêm chiều sâu sinh tồn.</p>
-                     </div>
-                 </div>
-                  <!-- Point 3 -->
-                 <div data-aos="fade-up" data-aos-delay="400">
-                      <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center min-h-[10rem]">
-                         <i class="fas fa-rocket text-4xl md:text-5xl lg:text-6xl mb-4 text-gradient-purple-blue"></i>
-                         <h3 class="text-lg md:text-xl font-heading mb-2">Hiệu Năng Vượt Trội</h3>
-                         <p class="text-sm md:text-base text-base-content/80">Ping thấp (~50ms), server ổn định, đảm bảo trải nghiệm mượt mà.</p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
-
-     <!-- Video Showcase Section -->
-     <div class="bg-base-100 section-padding px-4">
-         <div class="container mx-auto text-center">
-             <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading mb-3" data-aos="fade-up">Xem Server Hành Động!</h2>
-             <div class="section-divider bg-gradient-to-r from-green-400 to-cyan-500" data-aos="fade-up" data-aos-delay="100"></div>
-             <p class="max-w-2xl mx-auto text-base-content/80 mb-10 text-sm md:text-base lg:text-lg" data-aos="fade-up" data-aos-delay="200">
-                 Một cái nhìn thoáng qua về lối chơi, cộng đồng và những pha hành động kịch tính trên Gambling SMP! (Video mẫu)
-             </p>
-             
-             <div class="max-w-4xl mx-auto aspect-w-16 aspect-h-9" data-aos="zoom-in" data-aos-delay="300">
-                 <iframe 
-                    class="w-full h-full rounded-lg shadow-2xl border-2 border-base-300"
-                    src="https://www.youtube.com/embed/MmB9b5njVbA" 
-                    title="YouTube video player - Server Trailer Placeholder" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                 </iframe>
-             </div>
-         </div>
-     </div>
-
-    <!-- Features Section -->
-    <div class="bg-base-200 section-padding px-4"> 
-        <div class="container mx-auto">
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading text-center mb-3 uppercase" data-aos="fade-up">Khám Phá Tính Năng</h2>
-            <div class="section-divider bg-gradient-to-r from-yellow-400 to-red-500" data-aos="fade-up" data-aos-delay="100"></div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10">
-
-                <!-- Feature Card 1: Gambling & Economy -->
-                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in">
-                    <div class="card-body items-center text-center p-5 md:p-6"> 
-                        <i class="fas fa-coins text-yellow-400 text-4xl md:text-5xl mb-3 transition-all duration-300"></i>
-                        <h3 class="card-title text-lg md:text-xl font-heading">Cá Cược & Kinh Tế</h3>
-                        <p class="text-sm md:text-base text-base-content/80">Thử vận may, đặt cược và làm giàu. Xây dựng đế chế tài chính!</p>
-                    </div>
-                </div>
-
-                <!-- Other Feature Cards -->
-                 <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="card-body items-center text-center p-5 md:p-6">
-                        <i class="fas fa-store text-green-400 text-4xl md:text-5xl mb-3 transition-all duration-300"></i>
-                        <h3 class="card-title text-lg md:text-xl font-heading">Shop & Vật Phẩm</h3>
-                        <p class="text-sm md:text-base text-base-content/80">Mua bán vật phẩm mạnh mẽ, độc đáo. Trang bị để thống trị!</p>
-                    </div>
-                </div>
-                 <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="card-body items-center text-center p-5 md:p-6">
-                        <i class="fas fa-khanda text-red-500 text-4xl md:text-5xl mb-3 transition-all duration-300"></i>
-                        <h3 class="card-title text-lg md:text-xl font-heading">Chiến Đấu & Xưng Bá</h3>
-                        <p class="text-sm md:text-base text-base-content/80">Tham gia PvP, war clan, khẳng định sức mạnh trên server.</p>
-                    </div>
-                </div>
-                 <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="300">
-                     <div class="card-body items-center text-center p-5 md:p-6">
-                          <div class="flex gap-4 mb-3">
-                              <i class="fas fa-tint text-cyan-400 text-4xl md:text-5xl transition-all duration-300"></i>
-                              <i class="fas fa-temperature-high text-orange-400 text-4xl md:text-5xl transition-all duration-300"></i>
-                          </div>
-                         <h3 class="card-title text-lg md:text-xl font-heading">Cơ Chế RLCraft</h3>
-                         <p class="text-sm md:text-base text-base-content/80">Quản lý cơn khát và nhiệt độ cơ thể. Sinh tồn thử thách!</p>
-                     </div>
-                 </div>
-                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="card-body items-center text-center p-5 md:p-6">
-                        <i class="fas fa-random text-blue-400 text-4xl md:text-5xl mb-3 transition-all duration-300"></i>
-                        <h3 class="card-title text-lg md:text-xl font-heading">RTP & Tiện Ích</h3>
-                        <p class="text-sm md:text-base text-base-content/80">Dịch chuyển (<code class="bg-base-100 px-1 rounded text-xs">/rtp</code>) và nhiều lệnh hữu ích khác.</p>
-                    </div>
-                </div>
-                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="card-body items-center text-center p-5 md:p-6">
-                         <div class="flex gap-4 mb-3">
-                             <i class="fab fa-java text-orange-500 text-4xl md:text-5xl transition-all duration-300"></i>
-                             <i class="fas fa-mobile-alt text-emerald-400 text-4xl md:text-5xl transition-all duration-300"></i>
+    <main>
+        <!-- Why Choose Us Section -->
+         <section class="bg-base-200 section-padding px-4">
+             <div class="container mx-auto text-center">
+                 <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading mb-3" data-aos="fade-up">Tại Sao Chọn Gambling SMP?</h2>
+                 <div class="section-divider bg-gradient-to-r from-purple-500 to-blue-500" data-aos="fade-up" data-aos-delay="100"></div>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 mt-10"> 
+                     <!-- Point 1 -->
+                     <div data-aos="fade-up" data-aos-delay="200">
+                         <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center min-h-[10rem]"> 
+                             <i class="fas fa-dice-d20 text-4xl md:text-5xl lg:text-6xl mb-4 text-gradient-yellow-red"></i>
+                             <h3 class="text-lg md:text-xl font-heading mb-2">Độc Đáo & Hấp Dẫn</h3>
+                             <p class="text-sm md:text-base text-base-content/80">Hệ thống Gambling và kinh tế riêng biệt, mang lại trải nghiệm mới lạ.</p>
                          </div>
-                        <h3 class="card-title text-lg md:text-xl font-heading">Hỗ Trợ Cross-Play</h3>
-                        <p class="text-sm md:text-base text-base-content/80">Kết nối dễ dàng từ cả <span class="font-semibold text-orange-500">Java</span> và <span class="font-semibold text-emerald-400">Bedrock</span>.</p>
+                     </div>
+                     <!-- Point 2 -->
+                     <div data-aos="fade-up" data-aos-delay="300">
+                          <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center min-h-[10rem]">
+                             <i class="fas fa-shield-halved text-4xl md:text-5xl lg:text-6xl mb-4 text-gradient-green-cyan"></i>
+                             <h3 class="text-lg md:text-xl font-heading mb-2">Sinh Tồn Khắc Nghiệt</h3>
+                             <p class="text-sm md:text-base text-base-content/80">Cơ chế Nước & Nhiệt Độ từ RLCraft thêm chiều sâu sinh tồn.</p>
+                          </div>
+                     </div>
+                      <!-- Point 3 -->
+                     <div data-aos="fade-up" data-aos-delay="400">
+                          <div class="p-6 bg-base-100 rounded-lg shadow-lg h-full flex flex-col items-center min-h-[10rem]">
+                             <i class="fas fa-rocket text-4xl md:text-5xl lg:text-6xl mb-4 text-gradient-purple-blue"></i>
+                             <h3 class="text-lg md:text-xl font-heading mb-2">Hiệu Năng Vượt Trội</h3>
+                             <p class="text-sm md:text-base text-base-content/80">Ping thấp (~50ms), server ổn định, đảm bảo trải nghiệm mượt mà.</p>
+                          </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+         <!-- Video Showcase Section -->
+         <section class="bg-base-100 section-padding px-4">
+             <div class="container mx-auto text-center">
+                 <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading mb-3" data-aos="fade-up">Xem Server Hành Động!</h2>
+                 <div class="section-divider bg-gradient-to-r from-green-400 to-cyan-500" data-aos="fade-up" data-aos-delay="100"></div>
+                 <p class="max-w-2xl mx-auto text-base-content/80 mb-10 text-sm md:text-base lg:text-lg" data-aos="fade-up" data-aos-delay="200">
+                     Một cái nhìn thoáng qua về lối chơi, cộng đồng và những pha hành động kịch tính trên Gambling SMP! (Video mẫu)
+                 </p>
+                 
+                 <div class="max-w-4xl mx-auto aspect-w-16 aspect-h-9" data-aos="zoom-in" data-aos-delay="300">
+                     <iframe 
+                        class="w-full h-full rounded-lg shadow-2xl border-2 border-base-300"
+                        src="https://www.youtube.com/embed/MmB9b5njVbA" /* !!! Nhớ thay link video của bạn !!! */
+                        title="YouTube video player - Server Trailer Placeholder" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                     </iframe>
+                 </div>
+             </div>
+         </section>
+
+        <!-- Features Section -->
+        <section class="bg-base-200 section-padding px-4"> 
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading text-center mb-3 uppercase" data-aos="fade-up">Khám Phá Tính Năng</h2>
+                <div class="section-divider bg-gradient-to-r from-yellow-400 to-red-500" data-aos="fade-up" data-aos-delay="100"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10">
+
+                    <!-- Feature Cards (Nội dung giữ nguyên) -->
+                    <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in">
+                        <div class="card-body items-center text-center p-5 md:p-6"> 
+                            <i class="fas fa-coins text-yellow-400 text-4xl md:text-5xl mb-3 transition-all duration-300"></i>
+                            <h3 class="card-title text-lg md:text-xl font-heading">Cá Cược & Kinh Tế</h3>
+                            <p class="text-sm md:text-base text-base-content/80">Thử vận may, đặt cược và làm giàu. Xây dựng đế chế tài chính!</p>
+                        </div>
+                    </div>
+                     <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="card-body items-center text-center p-5 md:p-6">
+                            <i class="fas fa-store text-green-400 text-4xl md:text-5xl mb-3 transition-all duration-300"></i>
+                            <h3 class="card-title text-lg md:text-xl font-heading">Shop & Vật Phẩm</h3>
+                            <p class="text-sm md:text-base text-base-content/80">Mua bán vật phẩm mạnh mẽ, độc đáo. Trang bị để thống trị!</p>
+                        </div>
+                    </div>
+                     <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="card-body items-center text-center p-5 md:p-6">
+                            <i class="fas fa-khanda text-red-500 text-4xl md:text-5xl mb-3 transition-all duration-300"></i>
+                            <h3 class="card-title text-lg md:text-xl font-heading">Chiến Đấu & Xưng Bá</h3>
+                            <p class="text-sm md:text-base text-base-content/80">Tham gia PvP, war clan, khẳng định sức mạnh trên server.</p>
+                        </div>
+                    </div>
+                     <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="300">
+                         <div class="card-body items-center text-center p-5 md:p-6">
+                              <div class="flex gap-4 mb-3">
+                                  <i class="fas fa-tint text-cyan-400 text-4xl md:text-5xl transition-all duration-300"></i>
+                                  <i class="fas fa-temperature-high text-orange-400 text-4xl md:text-5xl transition-all duration-300"></i>
+                              </div>
+                             <h3 class="card-title text-lg md:text-xl font-heading">Cơ Chế RLCraft</h3>
+                             <p class="text-sm md:text-base text-base-content/80">Quản lý cơn khát và nhiệt độ cơ thể. Sinh tồn thử thách!</p>
+                         </div>
+                     </div>
+                    <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="card-body items-center text-center p-5 md:p-6">
+                            <i class="fas fa-random text-blue-400 text-4xl md:text-5xl mb-3 transition-all duration-300"></i>
+                            <h3 class="card-title text-lg md:text-xl font-heading">RTP & Tiện Ích</h3>
+                            <p class="text-sm md:text-base text-base-content/80">Dịch chuyển (<code class="bg-base-100 px-1 rounded text-xs">/rtp</code>) và nhiều lệnh hữu ích khác.</p>
+                        </div>
+                    </div>
+                    <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300 min-h-[12rem]" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="card-body items-center text-center p-5 md:p-6">
+                             <div class="flex gap-4 mb-3">
+                                 <i class="fab fa-java text-orange-500 text-4xl md:text-5xl transition-all duration-300"></i>
+                                 <i class="fas fa-mobile-alt text-emerald-400 text-4xl md:text-5xl transition-all duration-300"></i>
+                             </div>
+                            <h3 class="card-title text-lg md:text-xl font-heading">Hỗ Trợ Cross-Play</h3>
+                            <p class="text-sm md:text-base text-base-content/80">Kết nối dễ dàng từ cả <span class="font-semibold text-orange-500">Java</span> và <span class="font-semibold text-emerald-400">Bedrock</span>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Connection Section -->
-    <div id="connect" class="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 section-padding">
-        <div class="container mx-auto px-4 text-center text-neutral-content">
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading mb-3 uppercase" data-aos="fade-up">Sẵn Sàng Chinh Phục?</h2>
-            <p class="text-base md:text-lg lg:text-xl mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">Kết nối ngay để bắt đầu cuộc phiêu lưu đầy kịch tính tại Gambling SMP!</p>
-            
-            <div class="mt-6" data-aos="fade-up" data-aos-delay="200">
-                <p class="text-lg md:text-xl mb-3 font-semibold">Địa chỉ Server (Java & Bedrock):</p>
-                <div class="inline-block bg-neutral text-neutral-content px-4 py-3 md:px-6 md:py-4 rounded-lg shadow-lg text-base md:text-lg lg:text-xl font-mono ip-copy relative group max-w-full" onclick="copyToClipboard('smp.ck.io.vn', this)"> <!-- Font-mono kept for IP -->
-                    smp.ck.io.vn
-                    <span class="tooltip-text absolute -bottom-10 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"> 
-                        Click để sao chép IP
-                    </span>
-                     <span id="copy-icon" class="fas fa-copy absolute right-3 top-1/2 transform -translate-y-1/2 text-base md:text-lg opacity-50 group-hover:opacity-100 transition-opacity"></span>
+        <!-- Connection Section -->
+        <section id="connect" class="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 section-padding">
+            <div class="container mx-auto px-4 text-center text-neutral-content">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading mb-3 uppercase" data-aos="fade-up">Sẵn Sàng Chinh Phục?</h2>
+                <p class="text-base md:text-lg lg:text-xl mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">Kết nối ngay để bắt đầu cuộc phiêu lưu đầy kịch tính tại Gambling SMP!</p>
+                
+                <div class="mt-6" data-aos="fade-up" data-aos-delay="200">
+                    <p class="text-lg md:text-xl mb-3 font-semibold">Địa chỉ Server (Java & Bedrock):</p>
+                    <div class="inline-block bg-neutral text-neutral-content px-4 py-3 md:px-6 md:py-4 rounded-lg shadow-lg text-base md:text-lg lg:text-xl font-mono ip-copy relative group max-w-full" onclick="copyToClipboard('smp.ck.io.vn', this)">
+                        smp.ck.io.vn
+                        <span class="tooltip-text absolute -bottom-10 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"> 
+                            Click để sao chép IP
+                        </span>
+                         <span id="copy-icon" class="fas fa-copy absolute right-3 top-1/2 transform -translate-y-1/2 text-base md:text-lg opacity-50 group-hover:opacity-100 transition-opacity"></span>
+                    </div>
+                    <p id="copy-status" class="text-sm mt-3 h-5 font-semibold transition-all"></p> 
                 </div>
-                <p id="copy-status" class="text-sm mt-3 h-5 font-semibold transition-all"></p> 
-            </div>
 
-            <div class="mt-8 flex justify-center items-center flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6" data-aos="fade-up" data-aos-delay="300">
-                <a href="https://discord.gg/bMtjaqyAYD" class="btn btn-outline btn-accent hover:scale-105 transition-transform w-full sm:w-auto">
-                     <i class="fab fa-discord mr-2"></i> Discord Server
-                </a>
-                 <a href="#" class="btn btn-outline btn-secondary hover:scale-105 transition-transform w-full sm:w-auto">
-                     <i class="fas fa-book-open mr-2"></i> Wiki / Hướng Dẫn
-                </a>
+                <div class="mt-8 flex justify-center items-center flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://discord.gg/bMtjaqyAYD" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-accent hover:scale-105 transition-transform w-full sm:w-auto"> <!-- Added target and rel -->
+                         <i class="fab fa-discord mr-2"></i> Discord Server
+                    </a>
+                     <a href="#" class="btn btn-outline btn-secondary hover:scale-105 transition-transform w-full sm:w-auto"> <!-- !!! Thay # bằng link Wiki !!! -->
+                         <i class="fas fa-book-open mr-2"></i> Wiki / Hướng Dẫn
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer footer-center p-6 bg-base-300 text-base-content">
         <aside>
              <i class="fas fa-gem text-3xl text-primary mb-2"></i>
-            <p class="font-semibold">Gambling SMP © 2025</p>
+             <!-- UPDATED Copyright Year -->
+            <p class="font-semibold">Gambling SMP © 2024</p> 
             <p class="text-sm">Nơi huyền thoại bắt đầu.</p>
         </aside>
         <nav>
@@ -357,6 +380,7 @@
 
     <!-- Scripts -->
     <script>
+        // Initialize AOS
         AOS.init({
             once: true, 
             duration: 800, 
@@ -366,6 +390,7 @@
             throttleDelay: 99, 
         });
 
+        // Copy to Clipboard Script (Unchanged)
         function copyToClipboard(text, buttonElement) {
             navigator.clipboard.writeText(text).then(function() {
                 const statusElement = document.getElementById('copy-status');
