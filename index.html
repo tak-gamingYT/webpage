@@ -22,6 +22,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <!-- Tailwind Aspect Ratio Plugin (Needed for aspect-w/h classes if not included in core) -->
+    <!-- Usually included in modern Tailwind/DaisyUI, but added just in case -->
+    <script>
+        // If you encounter issues with aspect ratio, uncomment the line below
+        // require('@tailwindcss/aspect-ratio'), 
+    </script>
+
     <!-- Custom Tailwind Configuration -->
     <script>
     tailwind.config = {
@@ -30,6 +37,9 @@
           fontFamily: {
              sans: ['Inter', 'sans-serif'],
              heading: ['Bebas Neue', 'sans-serif'], // Custom font for headings
+          },
+          aspectRatio: { // Ensure aspect ratio utility is available
+             '16/9': '16 / 9',
           },
           animation: {
             'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
@@ -47,7 +57,10 @@
           },
         }
       },
-      plugins: [require("daisyui")],
+      plugins: [
+          require("daisyui"),
+          require('@tailwindcss/aspect-ratio'), // Enable aspect ratio plugin
+        ],
       daisyui: {
         themes: ["night"], // Stick with night theme but add colorful accents
       },
@@ -205,72 +218,97 @@
          </div>
      </div>
 
-    <!-- Features Section -->
-    <div class="container mx-auto px-4 py-16 md:py-24">
-        <h2 class="text-4xl md:text-5xl font-heading text-center mb-4 uppercase" data-aos="fade-up">Khám Phá Tính Năng</h2>
-         <div class="section-divider bg-gradient-to-r from-yellow-400 to-red-500" data-aos="fade-up" data-aos-delay="100"></div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-
-            <!-- Feature Card 1: Gambling & Economy -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in">
-                <div class="card-body items-center text-center">
-                    <i class="fas fa-coins text-yellow-400 text-6xl mb-4 transition-all duration-300"></i>
-                    <h3 class="card-title text-3xl font-heading">Cá Cược & Kinh Tế</h3>
-                    <p class="text-base-content/80">Thử vận may, đặt cược và làm giàu. Xây dựng đế chế tài chính của riêng bạn!</p>
-                </div>
-            </div>
-
-            <!-- Feature Card 2: Shop & Items -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
-                <div class="card-body items-center text-center">
-                    <i class="fas fa-store text-green-400 text-6xl mb-4 transition-all duration-300"></i>
-                    <h3 class="card-title text-3xl font-heading">Shop & Vật Phẩm</h3>
-                    <p class="text-base-content/80">Mua bán vật phẩm mạnh mẽ, độc đáo. Trang bị tận răng để thống trị!</p>
-                </div>
-            </div>
-
-            <!-- Feature Card 3: PvP & Xưng Bá -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
-                <div class="card-body items-center text-center">
-                    <i class="fas fa-khanda text-red-500 text-6xl mb-4 transition-all duration-300"></i>
-                    <h3 class="card-title text-3xl font-heading">Chiến Đấu & Xưng Bá</h3>
-                    <p class="text-base-content/80">Tham gia PvP, war clan, khẳng định sức mạnh và vị thế của bạn trên server.</p>
-                </div>
-            </div>
-
-            <!-- Feature Card 4: RLCraft Mechanics -->
-             <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
-                 <div class="card-body items-center text-center">
-                      <div class="flex gap-4 mb-4">
-                          <i class="fas fa-tint text-cyan-400 text-6xl transition-all duration-300"></i>
-                          <i class="fas fa-temperature-high text-orange-400 text-6xl transition-all duration-300"></i>
-                      </div>
-                     <h3 class="card-title text-3xl font-heading">Cơ Chế RLCraft</h3>
-                     <p class="text-base-content/80">Quản lý cơn khát và nhiệt độ cơ thể. Sinh tồn chưa bao giờ thử thách đến thế!</p>
-                 </div>
+     <!-- Video Showcase Section -->
+     <div class="bg-base-100 py-16 md:py-24 px-4">
+         <div class="container mx-auto text-center">
+             <h2 class="text-4xl md:text-5xl font-heading mb-4" data-aos="fade-up">Xem Server Hành Động!</h2>
+             <div class="section-divider bg-gradient-to-r from-green-400 to-cyan-500" data-aos="fade-up" data-aos-delay="100"></div>
+             <p class="max-w-2xl mx-auto text-base-content/80 mb-12 text-lg" data-aos="fade-up" data-aos-delay="200">
+                 Một cái nhìn thoáng qua về lối chơi, cộng đồng và những pha hành động kịch tính trên Gambling SMP! (Đây là video mẫu, bạn sẽ thay thế bằng video server thực tế)
+             </p>
+             
+             <!-- Video Embed Container -->
+             <div class="max-w-4xl mx-auto aspect-w-16 aspect-h-9" data-aos="zoom-in" data-aos-delay="300">
+                 <iframe 
+                    class="w-full h-full rounded-lg shadow-2xl" 
+                    src="https://www.youtube.com/embed/MmB9b5njVbA" <!-- !!! THAY THẾ URL NÀY BẰNG LINK EMBED VIDEO CỦA BẠN !!! -->
+                    title="YouTube video player - Server Trailer Placeholder" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                 </iframe>
              </div>
+         </div>
+     </div>
 
-             <!-- Feature Card 5: RTP & Utilities -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
-                <div class="card-body items-center text-center">
-                    <i class="fas fa-random text-blue-400 text-6xl mb-4 transition-all duration-300"></i>
-                    <h3 class="card-title text-3xl font-heading">RTP & Tiện Ích</h3>
-                    <p class="text-base-content/80">Dịch chuyển ngẫu nhiên khám phá thế giới (<code class="bg-base-100 px-1 rounded text-sm">/rtp</code>) và nhiều lệnh hữu ích khác.</p>
+    <!-- Features Section -->
+    <div class="bg-base-200 py-16 md:py-24 px-4"> <!-- Changed background for contrast -->
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-heading text-center mb-4 uppercase" data-aos="fade-up">Khám Phá Tính Năng</h2>
+            <div class="section-divider bg-gradient-to-r from-yellow-400 to-red-500" data-aos="fade-up" data-aos-delay="100"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+
+                <!-- Feature Card 1: Gambling & Economy -->
+                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in">
+                    <div class="card-body items-center text-center">
+                        <i class="fas fa-coins text-yellow-400 text-6xl mb-4 transition-all duration-300"></i>
+                        <h3 class="card-title text-3xl font-heading">Cá Cược & Kinh Tế</h3>
+                        <p class="text-base-content/80">Thử vận may, đặt cược và làm giàu. Xây dựng đế chế tài chính của riêng bạn!</p>
+                    </div>
+                </div>
+
+                <!-- Feature Card 2: Shop & Items -->
+                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-body items-center text-center">
+                        <i class="fas fa-store text-green-400 text-6xl mb-4 transition-all duration-300"></i>
+                        <h3 class="card-title text-3xl font-heading">Shop & Vật Phẩm</h3>
+                        <p class="text-base-content/80">Mua bán vật phẩm mạnh mẽ, độc đáo. Trang bị tận răng để thống trị!</p>
+                    </div>
+                </div>
+
+                <!-- Feature Card 3: PvP & Xưng Bá -->
+                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-body items-center text-center">
+                        <i class="fas fa-khanda text-red-500 text-6xl mb-4 transition-all duration-300"></i>
+                        <h3 class="card-title text-3xl font-heading">Chiến Đấu & Xưng Bá</h3>
+                        <p class="text-base-content/80">Tham gia PvP, war clan, khẳng định sức mạnh và vị thế của bạn trên server.</p>
+                    </div>
+                </div>
+
+                <!-- Feature Card 4: RLCraft Mechanics -->
+                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card-body items-center text-center">
+                        <div class="flex gap-4 mb-4">
+                            <i class="fas fa-tint text-cyan-400 text-6xl transition-all duration-300"></i>
+                            <i class="fas fa-temperature-high text-orange-400 text-6xl transition-all duration-300"></i>
+                        </div>
+                        <h3 class="card-title text-3xl font-heading">Cơ Chế RLCraft</h3>
+                        <p class="text-base-content/80">Quản lý cơn khát và nhiệt độ cơ thể. Sinh tồn chưa bao giờ thử thách đến thế!</p>
+                    </div>
+                </div>
+
+                <!-- Feature Card 5: RTP & Utilities -->
+                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card-body items-center text-center">
+                        <i class="fas fa-random text-blue-400 text-6xl mb-4 transition-all duration-300"></i>
+                        <h3 class="card-title text-3xl font-heading">RTP & Tiện Ích</h3>
+                        <p class="text-base-content/80">Dịch chuyển ngẫu nhiên khám phá thế giới (<code class="bg-base-100 px-1 rounded text-sm">/rtp</code>) và nhiều lệnh hữu ích khác.</p>
+                    </div>
+                </div>
+
+                <!-- Feature Card 6: Cross-Play -->
+                <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="card-body items-center text-center">
+                        <div class="flex gap-4 mb-4">
+                            <i class="fab fa-java text-orange-500 text-6xl transition-all duration-300"></i>
+                            <i class="fas fa-mobile-alt text-emerald-400 text-6xl transition-all duration-300"></i>
+                        </div>
+                        <h3 class="card-title text-3xl font-heading">Hỗ Trợ Cross-Play</h3>
+                        <p class="text-base-content/80">Kết nối dễ dàng từ cả <span class="font-semibold text-orange-500">Java</span> và <span class="font-semibold text-emerald-400">Bedrock</span> Edition.</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Feature Card 6: Cross-Play -->
-            <div class="card bg-base-300 shadow-xl feature-card transition-all duration-300" data-aos="zoom-in" data-aos-delay="500">
-                <div class="card-body items-center text-center">
-                     <div class="flex gap-4 mb-4">
-                         <i class="fab fa-java text-orange-500 text-6xl transition-all duration-300"></i>
-                         <i class="fas fa-mobile-alt text-emerald-400 text-6xl transition-all duration-300"></i>
-                     </div>
-                    <h3 class="card-title text-3xl font-heading">Hỗ Trợ Cross-Play</h3>
-                    <p class="text-base-content/80">Kết nối dễ dàng từ cả <span class="font-semibold text-orange-500">Java</span> và <span class="font-semibold text-emerald-400">Bedrock</span> Edition.</p>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -302,7 +340,6 @@
             </div>
         </div>
     </div>
-
     <!-- Footer -->
     <footer class="footer footer-center p-6 bg-base-300 text-base-content">
         <aside>
@@ -339,17 +376,22 @@
                 statusElement.classList.add('text-green-400', 'opacity-100');
                 
                 // Change icon to checkmark
-                iconElement.classList.remove('fa-copy');
-                iconElement.classList.add('fa-check');
-                iconElement.classList.add('text-green-400');
+                if (iconElement) { // Check if icon exists
+                    iconElement.classList.remove('fa-copy');
+                    iconElement.classList.add('fa-check');
+                    iconElement.classList.add('text-green-400');
+                }
+
 
                 // Reset after 2 seconds
                 setTimeout(() => {
                     statusElement.textContent = ''; 
                     statusElement.classList.remove('opacity-100');
-                    iconElement.classList.remove('fa-check');
-                    iconElement.classList.remove('text-green-400');
-                    iconElement.classList.add('fa-copy');
+                     if (iconElement) { // Check if icon exists before resetting
+                        iconElement.classList.remove('fa-check');
+                        iconElement.classList.remove('text-green-400');
+                        iconElement.classList.add('fa-copy');
+                    }
                 }, 2000);
 
             }, function(err) {
